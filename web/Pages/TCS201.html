@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TCS201</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+        
+        <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+        <script src="lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function() {
+                $(".knob").knob();
+            });
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+   
+        <script>
+            function getCookie(cookieName) 
+            {  
+                var allcookies = document.cookie;  
+                cookieName += "=";  
+                var pos = allcookies.indexOf(cookieName);  
+                if( pos != -1) 
+                {  
+                    var start = pos + cookieName.length;  
+                    var end = allcookies.indexOf(";",start);  
+                    if(end == -1) end = allcookies.length;  
+                    return unescape(allcookies.substring(start,end));   
+                }  
+            }
+        </script>
+        
+        <script>
+            if(getCookie("username") == '' || getCookie("username") == null)
+            {
+                window.location="/RestApache/Pages/sign-in.html";
+            }
+        </script>
+        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script>
+            $(function() 
+            {
+                $( "#datepicker" ).datepicker({ dateFormat: 'yymmdd' }).val();
+            });
+            
+            $(function() 
+            {
+                $( "#datepicker1" ).datepicker({ dateFormat: 'yymmdd' }).val();
+            });
+        </script>
+        
+    </head>
+    <body class="theme-blue">
+        <style type="text/css">
+            #line-chart {
+                height:300px;
+                width:800px;
+                margin: 0px auto;
+                margin-top: 1em;
+            }
+            .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover { 
+                color: #fff;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            $(function() {
+                var uls = $('.sidebar-nav > ul > *').clone();
+                uls.addClass('visible-xs');
+                $('#main-menu').append(uls.clone());
+            });
+        </script>
+        
+        <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+        
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> 台陸籍考勤系統</span></a>
+            </div>
+
+            <div class="navbar-collapse collapse" style="height: 1px;">
+                <ul id="main-menu" class="nav navbar-nav navbar-right">
+                    <li class="dropdown hidden-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span>
+                            <script>
+                                    document.write(getCookie("username"));
+                            </script>
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="./">My Account</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Admin Panel</li>
+                            <li><a href="./">Users</a></li>
+                            <li><a href="./">Security</a></li>
+                            <li><a tabindex="-1" href="./">Payments</a></li>
+                            <li class="divider"></li>
+                            <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar-nav">
+            <ul>
+                <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Dashboard<i class="fa fa-collapse"></i></a></li>
+                <li>
+                    <ul class="dashboard-menu nav nav-list collapse in">
+                        <li><a href="index.html"><span class="fa fa-caret-right"></span> 首頁</a></li>
+                        <li ><a href="user.html"><span class="fa fa-caret-right"></span> 使用者資訊</a></li>
+                        <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> 行事曆</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Account <span class="label label-info">+3</span></a></li>
+                <li>
+                    <ul class="accounts-menu nav nav-list collapse">
+                        <li ><a href="sign-in.html"><span class="fa fa-caret-right"></span> Sign In</a></li>
+                        <li ><a href="sign-up.html"><span class="fa fa-caret-right"></span> Sign Up</a></li>
+                        <li ><a href="reset-password.html"><span class="fa fa-caret-right"></span> Reset Password</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-legal"></i> 作業選項<i class="fa fa-collapse"></i></a></li>
+                <li>
+                    <ul class="legal-menu nav nav-list collapse">
+                        <li ><a href="/RestApache/Pages/TCS101_P1.html"><span class="fa fa-caret-right"></span> TCS101-台陸籍人事異動</a></li>
+                        <li ><a href="/RestApache/Pages/TCS102.html"><span class="fa fa-caret-right"></span> TCS102-台陸籍人事資料維護</a></li>
+                        <li ><a href="/RestApache/Pages/TCS201.html"><span class="fa fa-caret-right"></span> TCS201-台陸籍考勤維護</a></li>
+                        <li ><a href="/RestApache/Pages/TCS202.html"><span class="fa fa-caret-right"></span> TCS202-台陸籍機票補助申請</a></li>
+                        <li ><a href="/RestApache/Pages/TCS203.html"><span class="fa fa-caret-right"></span> TCS203-台陸籍返國探親假展延</a></li>
+                        <li ><a href="/RestApache/Pages/TCS211.html"><span class="fa fa-caret-right"></span> TCS211-台陸籍考勤紀錄查詢</a></li>
+                        <li ><a href="/RestApache/Pages/TCS212.html"><span class="fa fa-caret-right"></span> TCS212-台陸籍考勤統計</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Help</a></li>
+                <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <div class="header">
+                <h1 class="page-title">TS201-台陸籍考勤維護</h1>
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a> </li>
+                    <li><a href="users.html">作業選項</a> </li>
+                    <li class="active">TS201-台陸籍考勤維護</li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <br>
+                            <div class="form-group">                                    
+                                <label>公司別</label>
+                                <select id="maincom" class="form-control" onchange="findID()">
+                                    <option value="">請選擇公司</option>
+                                    <option value="V">越南廠</option>
+                                    <option value="J">太子龍</option>
+                                </select>
+                            </div>    
+                            <div class="form-group">                                    
+                                <label>員工職號</label>
+                                <select id="mainemp" class="form-control" onchange="findAll()">
+                                    <option value="">請選擇職號</option>
+                                </select>
+                            </div>
+                            <div class="form-group">                                    
+                                到職日<input id="mainarrive" class="form-control" disabled>
+                                起算日<input id="mainstart" class="form-control" disabled>
+                                核給天數<input id="mainallday" class="form-control" disabled>
+                            </div>
+                        </br>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-sm-10">
+                        <table class="table table-bordered" id="mytable">
+                            <!--<thead>-->
+                                <tr>
+                                    <th>年度</th>
+                                    <th>代碼</th>
+                                    <th>起始日</th>
+                                    <th>截止日</th>
+                                    <th>天數</th>
+                                    <th>剩餘</th>
+                                    <th>備註</th>
+                                    <th></th>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <form action="/RestApache/Pages/TCS201_ADD.html">
+                    <button type="submit" class="btn btn-primary">新增</button>
+                </form>
+                    
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id = "modal-title">刪除資料</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p id="modalcom"></p>
+                                <p id="modalemp"></p>
+                                <p id="modaltcd"></p>
+                                <p id="modaldst"></p>
+                                <p id="modalded"></p>
+                                
+                                <input type="hidden" id="tcd" name="tcd">
+                                <input type="hidden" id="oldstrdate" name="odstrdate">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" onclick="model_delete()">刪除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Modal -->
+                <div class="modal fade" id="mdy-Modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id = "mdy-modal-title">修改資料</h4>
+                            </div>
+                            <div class="modal-body">
+                                <label>起始日</label>
+                                <input name="strdate" type="text" class="form-control" id="datepicker">
+                                <label>截止日</label>
+                                <input name="enddate" type="text" class="form-control" id="datepicker1">
+                                <label>核給天數</label>
+                                <input id="days" name="days" class="form-control">
+                                <label>備註</label>
+                                <textarea id="comment" name="comment" rows="3" class="form-control"></textarea>
+                                
+                                
+                                <input type="hidden" id="tcd" name="tcd">
+                                <input type="hidden" id="year" name="year">
+                                <input type="hidden" id="mdy-oldstrdate" name="mdy-oldstrdate">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" onclick="model_save()">儲存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <footer>
+                    <hr>
+                    <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                    <p class="pull-right">ERP System by 資訊部</p>
+                    <p>© 2015 <a href="http://www.tainanspin.com.tw" target="_blank">台南紡織股份有限公司</a></p>
+                </footer>
+        </div>
+    </div>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+    <script>
+        function findID()
+        {
+            var comp = document.getElementById("maincom").value;
+            //var url = "/RestApache/webresources/WS_TCS201/GetID/" + comp;
+            var url = "/RestApache/webresources/WS_TCS201/GetID/" + comp + "?callback=?";
+            $.getJSON(url, 
+                function (data) 
+                {
+                    if(data.record.length > 0)
+                    {
+                        for (var i = 0; i < data.record.length; i++) 
+                        {
+                            var newoption = document.createElement('option');
+                            newoption.value = data.record[i].TCEEMP;
+                            newoption.textContent = data.record[i].TCEEMP + " " + data.record[i].TCENAM;
+                            document.getElementById("mainemp").options.add(newoption);
+                        }
+                    }
+                    else
+                    {
+                        document.getElementById("mainemp").options.length = 1;
+                    }
+                });
+        }
+        
+        function findAll() 
+        {
+            var comp = document.getElementById("maincom").value;
+            var id = document.getElementById("mainemp").value;
+            var url = "/RestApache/webresources/WS_TCS201/GetDETAIL/" + comp + "/" + id + "?callback=?";
+            $.getJSON(url, 
+                function (data)
+                {
+                    document.getElementById("mainarrive").value = data.base[0].arrive;
+                    document.getElementById("mainstart").value = data.base[0].start;
+                    document.getElementById("mainallday").value = data.base[0].allday;
+                    
+                    var rows = document.getElementById("mytable").getElementsByTagName("td").length;
+                    if(rows > 1)
+                    {
+                        for(var i = 0; i <= rows; i++)
+                        {
+                            document.getElementById("mytable").deleteRow(1);
+                        }
+                    }
+                    
+                    if(data.detail.length > 0)
+                    { 
+                        var table = document.getElementById("mytable");
+                        
+                        for (var i = 0; i < data.detail.length; i++) 
+                        {
+                            var row = table.insertRow(i + 1);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            var cell4 = row.insertCell(3);
+                            var cell5 = row.insertCell(4);
+                            var cell6 = row.insertCell(5);
+                            var cell7 = row.insertCell(6);
+                            var cell8 = row.insertCell(7);
+                            cell1.innerHTML = "<td>" + data.detail[i].TCHYER + "</td>";
+                            cell2.innerHTML = "<td>" + data.detail[i].tcdnam + "</td>";
+                            cell3.innerHTML = "<td>" + data.detail[i].TCHDST + "</td>";
+                            cell4.innerHTML = "<td>" + data.detail[i].TCHDED + "</td>";
+                            cell5.innerHTML = "<td>" + data.detail[i].TCHDAY + "</td>";
+                            cell6.innerHTML = "<td>" + data.detail[i].TCHLST + "</td>";
+                            cell7.innerHTML = "<td>" + data.detail[i].TCHTXT + "</td>";
+                            if(data.detail[i].edit == "Y")
+                            {
+                                cell8.innerHTML = "<a onclick=\"getMdyRow(this)\" href=\"#mdy-Modal\" role=\"button\" data-toggle=\"modal\"><i class=\"fa fa-pencil\"></i></a> " +
+                                                  "<a onclick=\"getRow(this)\" href=\"#myModal\" role=\"button\" data-toggle=\"modal\"><i class=\"fa fa-trash-o\" onclick=\"delitem()\"></i></a>";
+                            }
+                        }
+                    }
+                });
+        }
+
+        function getRow(n) 
+        {
+            var row = n.parentNode.parentNode;
+            var cols = row.getElementsByTagName("td");
+            var i = 0;
+
+            if(cols.length > 1)
+            {
+                document.getElementById("modalemp").innerHTML = "職號:" + document.getElementById("mainemp").value;
+                document.getElementById("modalcom").innerHTML = "公司別:" + document.getElementById("maincom").options[document.getElementById("maincom").selectedIndex].text;
+            }
+            
+            while (i < cols.length) 
+            {
+                var val = cols[i].childNodes[0].nodeValue
+                if (val != null) 
+                {
+                    if(i == 1)
+                    {
+                        document.getElementById("modaltcd").innerHTML = "假別:" + val;
+                        document.getElementById("tcd").value = val.substring(0, 2);
+                    }
+                    if(i == 2)
+                    {
+                        document.getElementById("modaldst").innerHTML = "起始日:" + val;
+                        document.getElementById("oldstrdate").value = val.substring(0, 9);
+                    }
+                    if(i == 3)
+                    {
+                        document.getElementById("modalded").innerHTML = "截止日:" + val;
+                    }
+                }
+                i++;
+            }
+        }
+        
+        function getMdyRow(n) 
+        {
+            var row = n.parentNode.parentNode;
+            var cols = row.getElementsByTagName("td");
+            var i = 0;
+            
+            while (i < cols.length) 
+            {
+                var val = cols[i].childNodes[0].nodeValue
+                if (val != null) 
+                {
+                    if(i == 0)
+                    {
+                        document.getElementById("year").value = val;
+                    }
+                    if(i == 1)
+                    {
+                        document.getElementById("tcd").value = val.substring(0, 2);
+                    }
+                    if(i == 2)
+                    {
+                        document.getElementById("mdy-oldstrdate").value = val;
+                    }
+                }
+                i++;
+            }
+        }
+        
+        function model_delete()
+        {
+            var state = "D";
+            var com = $('#maincom').val();
+            var emp = $('#mainemp').val();
+            var tcd = $('#tcd').val();
+            var oldstrdate = $('#oldstrdate').val();
+            
+            $.ajax({
+                url: "/RestApache/webresources/WS_TCS201/Act?callback=?",
+                data: "&state=" + state + "&com=" + com + "&emp=" + emp + "&tcd=" + tcd + "&oldstrdate=" + oldstrdate,
+                type: 'POST',
+                dataType: 'json',
+                error: function (jqXHR, textStatus, errorThrown) {
+                        alert(textStatus);
+                    },
+                success: function (data, textStatus, jqXHR) 
+                {
+                    if(data.Msg == "SY")
+                    {
+                        alert("異動成功");
+                        var targetURL = "/RestApache/Pages/TCS201.html";                         
+                        window.location = targetURL;        
+                    }
+                    else
+                    {
+                        if(data.Msg == 'A')
+                            alert("日期須迄日≧起日");
+                        else if(data.Msg == 'B')
+                            alert("一個日期僅可做一個考勤代碼");
+                        else if(data.Msg == 'C')
+                            alert("日期跨度不允許跨年度");
+                        else if(data.Msg == 'D')
+                            alert("實際天數需≦本年度可用天數");
+                        else if(data.Msg == 'E')
+                            alert("實際天數需≦迄日－起日");
+                        else if(data.Msg == 'F')
+                            alert("機票補助須確認可用次數");
+                        else if(data.Msg == 'G')
+                            alert("陪產假最多3天");
+                        else if(data.Msg == 'SI')
+                            alert("新增失敗");
+                        else if(data.Msg == 'SU')
+                            alert("修改失敗");
+                        else if(data.Msg == 'SD')
+                            alert("刪除失敗");
+                        else if(data.Msg == 'H')
+                            alert("無基本資料");
+                    }
+                }
+            });
+        }
+        
+        
+        function model_save()
+        {
+            var state = "U";
+            var com = $('#maincom').val();
+            var emp = $('#mainemp').val();
+            var year = $('#year').val();
+            var tcd = $('#tcd').val();
+            var strdate = $('#datepicker').val();
+            var enddate = $('#datepicker1').val();
+            var comment = $('#comment').val();
+            var days = $('#days').val();
+            var oldstrdate = $('#mdy-oldstrdate').val();
+            
+            $.ajax({
+                url: "/RestApache/webresources/WS_TCS201/Act?callback=?",
+                data: "&state=" + state + "&com=" + com + "&emp=" + emp + "&tcd=" + tcd + "&strdate=" + strdate +
+                      "&year=" + year + "&enddate=" + enddate + "&comment=" + comment + "&days=" + days + "&oldstrdate=" + oldstrdate,
+                type: 'POST',
+                dataType: 'json',
+                error: function (jqXHR, textStatus, errorThrown) {
+                        alert(textStatus);
+                    },
+                success: function (data, textStatus, jqXHR) 
+                {
+                    if(data.Msg == "SY")
+                    {
+                        alert("異動成功");
+                        var targetURL = "/RestApache/Pages/TCS201.html";                         
+                        window.location = targetURL;        
+                    }
+                    else
+                    {
+                        if(data.Msg == 'A')
+                            alert("日期須迄日≧起日");
+                        else if(data.Msg == 'B')
+                            alert("一個日期僅可做一個考勤代碼");
+                        else if(data.Msg == 'C')
+                            alert("日期跨度不允許跨年度");
+                        else if(data.Msg == 'D')
+                            alert("實際天數需≦本年度可用天數");
+                        else if(data.Msg == 'E')
+                            alert("實際天數需≦迄日－起日");
+                        else if(data.Msg == 'F')
+                            alert("機票補助須確認可用次數");
+                        else if(data.Msg == 'G')
+                            alert("陪產假最多3天");
+                        else if(data.Msg == 'SI')
+                            alert("新增失敗");
+                        else if(data.Msg == 'SU')
+                            alert("修改失敗");
+                        else if(data.Msg == 'SD')
+                            alert("刪除失敗");
+                        else if(data.Msg == 'H')
+                            alert("無基本資料");
+                    }
+                }
+            });
+        }
+    </script>
+    
+    </body>
+</html>

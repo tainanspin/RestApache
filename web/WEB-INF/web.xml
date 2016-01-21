@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>db_url</param-name>
+        <param-value>jdbc:mysql://192.168.11.33:3306/</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db_driver</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db_database</param-name>
+        <param-value>VIELIB</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db_username</param-name>
+        <param-value>vuser</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db_password</param-name>
+        <param-value>v123</param-value>
+    </context-param>
+    <listener>
+        <description>ServletContextListener, HttpSessionListener</description>
+        <listener-class>com.ws.ServiceListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.ws.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/Main.do</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
+</web-app>
