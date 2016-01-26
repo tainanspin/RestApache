@@ -32,7 +32,6 @@
     <body>
         ldkfgj[lskjg[soidgjoi[wejg[asdl;,vctgik0eogjkpae,fweipoajgse
         <div>
-            123jhvighfvkhb,hj45Data:<BR>
             aaaaaa
             bbbbbb
             cccccc
