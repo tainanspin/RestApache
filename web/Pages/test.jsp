@@ -34,8 +34,6 @@
             aaaaaa
             bbbbbb
             cccccc
-            eeeeee
-            gggggg
         </div>
             <TEXTAREA id="comments" COLS=40 ROWS=6></TEXTAREA>
     </body>
